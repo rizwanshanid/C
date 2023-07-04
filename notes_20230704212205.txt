@@ -1,0 +1,67 @@
+07.04 9:01 PM
+2
+Aim-2
+Implement pattern matching algorithm
+Algorithm
+1.Start
+2.Declare i,j, and initialize f=0,count=0
+3.Read the string into str
+4.Read the pattern to check into pattern
+5.str_length=strlen(str)
+ pattern_length=strlen(pattern)
+6.If str_length>pattern_length goto step 7 otherwise goto step 15
+7.[initialize] i=0
+8.if i<str_length then goto step 9
+9.[initialize] j=0
+10.if j<pattern_length then goto step 11
+11.if str[i+j]==pattern[j]
+ Count++
+12.if count=pattern_length
+13.print “Pattern matched at position”, i+1
+ Set f=1
+14.if f!=1
+15. Print “Item not found”
+16.Stop
+Source Code
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+ int str_length, pattern_length, j, i, count = 0,f=0;
+ char str[30], pattern[30] ;
+ printf("\nEnter a String:\t");
+ scanf("%[^\t\n]s",str);
+ printf("\nEnter a Pattern to Match:\t");
+ scanf("%s", pattern);
+ str_length = strlen(str);
+ pattern_length = strlen(pattern);
+ if(pattern_length>str_length)
+ printf("Pattern not found\n");
+ else
+ {
+ for(i = 0; i < str_length; i++)
+ {
+ for(j = 0; j < pattern_length; j++)
+ {
+ if(str[i + j] == pattern[j])
+count++;
+ }
+ if(count == pattern_length)
+ {
+ printf("\nPattern Matched at Position:\t");
+ printf("%d\t", i+1);
+ f=1;
+ }
+ count = 0;
+ }
+if(f!=1)
+printf("Pattern Not found");
+ }
+ printf("\n");
+ }
+Output
+Enter a string: india
+Enter a pattern to match: ia
+Pattern matched at position: 4
+
+
