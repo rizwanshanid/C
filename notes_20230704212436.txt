@@ -1,0 +1,121 @@
+07.04 9:19 PM
+16
+Aim-16
+Delete a node from singly linked list.
+Algorithm
+1. Start
+2. Globally declare structure node with data val, and *next.
+3. Declare count,i,val.
+4. Set struct node * head = NULL
+5. Read number of elements.
+6. Call insert_front(&head, val)
+7. Print initial list.
+8. Call delete_node(&head, val)
+9. Print final list.
+Procedure:-
+insert_front(struct node **head, int value)
+1. Set struct node * new_node = NULL;
+2. Allocate memory for new node.
+3. if (new_node == NULL)
+ Printf "Failed to insert element. Out of memory"
+4. Set new_node->val = value;
+5. Set new_node->next = *head;
+6. Set *head = new_node;
+delete_node(struct node **head, int val)
+1. Set struct node *tmp = NULL
+2. Set struct node *tmp1 = NULL;
+3. if (head == NULL || *head == NULL),then return.
+4. if((*head)->val == val) then do steps 5 to 8.
+5. Set tmp = *head;
+6. Set *head = (*head)->next;
+7. Set free(tmp);
+8. return
+9. Set tmp = *head;
+10. while(tmp->next && tmp->next->val != val), then tmp = tmp->next
+11. if(tmp->next) then do steps 12 to 14.
+12. Set tmp1 = tmp->next
+13. Set tmp->next = tmp1->next
+14. free(tmp1)
+15. else
+ Print "element not found in the list"
+Source code
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+ int val;
+ struct node *next;
+};
+void print_list(struct node *head)
+{
+ while(head)
+ {
+ printf("%d->", head->val);
+ head = head->next;
+ }
+ printf("|||\n");
+}
+void insert_front(struct node **head, int value)
+{
+ struct node * new_node = NULL;
+ new_node = (struct node *)malloc(sizeof(struct node));
+ if (new_node == NULL)
+ {
+ printf("Failed to insert element. Out of memory");
+ }
+ new_node->val = value;
+ new_node->next = *head;
+ *head = new_node;
+}
+void delete_node(struct node **head, int val)
+{
+ struct node *tmp = NULL;
+ struct node *tmp1 = NULL;
+ if (head == NULL || *head == NULL) return;
+ if((*head)->val == val)
+ {
+ tmp = *head;
+ *head = (*head)->next;
+ free(tmp);
+ return;
+ }
+ tmp = *head;
+ while(tmp->next && tmp->next->val != val) tmp = tmp->next;
+ if(tmp->next)
+ {
+ tmp1 = tmp->next;
+ tmp->next = tmp1->next;
+ free(tmp1);
+ }
+ else
+ {
+ printf("%d not found in the list.\n", val);
+ }
+}
+void main()
+{
+ int count = 0, i, val;
+ struct node * head = NULL;
+ printf("Enter number of elements: ");
+ scanf("%d", &count);
+ for (i = 0; i < count; i++)
+ {
+ printf("Enter %dth element: ", i);
+ scanf("%d", &val);
+ insert_front(&head, val);
+ }
+ printf("Initial List: ");
+ print_list(head);
+ printf("Enter a value to delete from the list: ");
+ scanf("%d", &val);
+ delete_node(&head, val);
+ printf("List after deletion: ");
+ print_list(head);
+}
+Output
+ Enter number of elements: 3
+Enter 0th element: 1
+Enter 1th element: 6
+Enter 2th element: 9
+Initial List: 9->6->1->|||
+Enter a value to delete from the list: 1
+List after deletion: 9->6->||

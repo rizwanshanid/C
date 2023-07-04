@@ -1,0 +1,58 @@
+07.04 9:13 PM
+14
+Aim-14
+Implement insertion sort.
+Algorithm
+1. Start
+2. Declare array,c,d,t.
+3. Read number of elements,n
+4. Read n numbers.
+5. Repeat steps 6 to 13 while c<=n-1.
+6. Set c=1.
+7. Set d=c.
+8. Repeat steps 9 to 12 while (d > 0 && array[d-1] > array[d]).
+9. Set t = array[d];
+10. Set array[d] = array[d-1];
+11. Set array[d-1] = t;
+12. Set d=d-1
+13. Set c=c+1.
+14. Print sorted elements.
+15. Stop
+Source code
+#include <stdio.h>
+void main()
+{
+ int n, array[1000], c, d, t;
+ printf("Enter number of elements\n");
+ scanf("%d", &n);
+ printf("Enter %d integers\n", n);
+ for (c = 0; c < n; c++)
+scanf("%d", &array[c]);
+ for (c = 1 ; c <= n - 1; c++)
+ {
+d = c;
+while ( d > 0 && array[d-1] > array[d])
+{
+t = array[d];
+array[d] = array[d-1];
+array[d-1] = t;
+d--;
+}
+ }
+ printf("Sorted list in ascending order:\n");
+ for (c = 0; c <= n - 1; c++) {
+printf("%d\n", array[c]);
+ }
+}
+Output
+Enter number of elements
+3
+Enter 3 integers
+45
+32
+67
+Sorted list in ascending order:
+32
+45
+67
+

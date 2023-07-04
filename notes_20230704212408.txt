@@ -1,0 +1,68 @@
+07.04 9:12 PM
+13
+Aim-13
+Implement selection sort.
+Algorithm
+1. Start
+2. Declare array,n,i,j,min,temp.
+3. Read the number of elements.
+4. Read n elements.
+5. Repeat steps 6 to 13 while i<n-1.
+6. Set i=0
+7. Set min=i.
+8. Repeat steps 9 to 11 while j<n.
+9. Set j=i+1.
+10. If a[min]>a[j]
+ set min=j
+11. Set j=j+1
+12. If min!=i
+Set temp=a[i];
+a[i]=a[min];
+a[min]=temp;
+13. Set i=i+1
+14. Print sorted elements.
+15. Stop
+Source code
+#include<stdio.h>
+void main()
+{
+int a[100],n,i,j,min,temp;
+printf("\n Enter the Number of Elements:\n ");
+scanf("%d",&n);
+printf("\n Enter %d Elements: \n",n);
+for(i=0;i<n;i++)
+{
+scanf("%d",&a[i]);
+}
+for(i=0;i<n-1;i++)
+{
+min=i;
+for(j=i+1;j<n;j++)
+{
+if(a[min]>a[j])
+min=j;
+}
+if(min!=i)
+{
+temp=a[i];
+a[i]=a[min];
+a[min]=temp;
+}
+}
+printf("\n The Sorted array in ascending order: \n");
+for(i=0;i<n;i++)
+{
+printf("%d \n",a[i]);
+}
+}
+Output
+Enter the Number of Elements:
+ 3
+Enter 3 Elements:
+54
+32
+90
+The Sorted array in ascending order:
+32
+54
+90

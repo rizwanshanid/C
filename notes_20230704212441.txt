@@ -1,0 +1,85 @@
+07.04 9:20 PM
+17
+Aim-17
+Evaluation of postfix expression.
+Algorithm
+1. Start
+2. Declare array exp,*e,n1,n2,n3,num.
+3. Read the postfix expression.
+4. Repeat while(*e != '\0')
+5. if(isdigit(*e))
+ num = *e - 48.
+ Call push(num).
+6. else
+ Set n1 = pop()
+ Set n2 = pop()
+7. If operator '+': then n3 = n1 + n2
+8. If operator ‘-’: then n3 = n2 - n1
+9. If operator '*': then n3 = n1 * n2
+10. If operator '/': then n3 = n2 / n1
+11. Print the result of expression.
+12. Stop
+Source code
+#include<stdio.h>
+#include<ctype.h>
+int stack[20];
+int top = -1;
+void push(int x)
+{
+stack[++top] = x;
+}
+int pop()
+{
+return stack[top--];
+}
+void main()
+{
+char exp[20];
+ char *e;
+int n1,n2,n3,num;
+printf("Enter the expression :: ");
+scanf("%s",exp);
+e = exp;
+while(*e != '\0')
+{
+if(isdigit(*e))
+{
+num = *e - 48;
+push(num);
+}
+else
+{
+n1 = pop();
+n2 = pop();
+switch(*e)
+{
+case '+':
+{
+n3 = n1 + n2;
+break;
+}
+case '-':
+{
+n3 = n2 - n1;
+break;
+}
+case '*':
+{
+n3 = n1 * n2;
+break;
+}
+case '/':
+{
+n3 = n2 / n1;
+break;
+}
+}
+push(n3);
+}
+e++;
+}
+printf("\nThe result of expression %s = %d\n\n",exp,pop());
+}
+Output
+Enter the expression :: 245+*
+The result of expression 245+* = 18

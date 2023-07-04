@@ -1,0 +1,39 @@
+07.04 9:21 PM
+18
+AIM-18
+implement exchange sort
+code:-
+#include<stdio.h>
+int main(void)
+{
+    int array[5], i, j, temp,n;
+    printf("Enter the number of elements : ");
+    scanf("%d",&n);
+    printf("Enter %d numbers : ",n);
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d",&array[i]);
+    }
+    for(i = 0; i < (n -1); i++)
+    {
+        for (j=(i + 1); j < n; j++)
+        {
+            if (array[i] > array[j])
+            {
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+    printf("Sorted array is : ");
+    for (i = 0; i < n; i++)
+    {
+        printf(" %d ",array[i]);
+    }
+    return 0;
+}
+Output
+Enter the number of elements : 5
+Enter 5 numbers : 11 99 44 77 22   
+Sorted array is :  11  22  44  77  99
