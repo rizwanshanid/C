@@ -1,0 +1,215 @@
+07.04 9:09 PM
+10
+Aim-10
+Implement stack using linkedlist
+Algorithm
+1. Start
+2. Globally declare integer val stuct node pointer next inside struct node with pointer head
+3. Initialize choice as 0
+4. Print “Stack operations using linked list”.
+5. Read choice
+6. If choice=1 call push()
+7. If choice=2 call pop()
+8. If choice=3 call show()
+9. If choice=4, then Exit.
+Procedure:-
+push()
+1. Start
+2. Initialize int val
+3. Allocate size of struct node for struct node ptr
+4. If ptr is NULL goto step 4 else goto step 5
+5. Return not able to push the element
+6. Read the value to int val
+7. If head is null goto step 7 else step 9
+8. Set ptr`s pinter of val as val and ptr`s pointer next as null
+9. Assign value of ptr to head
+10. Set ptr`s pinter of val as val and ptr`s pointer next as head
+11. Assign value of ptr to head
+[End of if loop]
+[End of If loop]
+12. Return Item pushed
+13. Stop
+pop()
+1. Start
+2. Initialize int as item
+3. Initialize struct node as pointer ptr
+4. If head is null goto sterp 5 else step 6
+5. Return Underflow
+6. Set value of item as pointer val of struct head
+7. Assign value of ptr as head
+8. Set head as pointer next of struct next
+9. free(ptr)
+[End of loop]
+10. Return Item popped
+show()
+1. Initialize int 1
+2. Initialize struct node with pointer ptr
+3. Assign value of head to ptr
+4. If ptr is null goto step 5 else 6
+5. Return stack is empty
+6. Print printing stack elements
+7. While ptr isnt not null repeat step 8 and 9
+8. Print value of val of ptr points to val
+9. Move pointer of ptr to next
+Source code
+#include <stdio.h>
+#include <stdlib.h>
+void push();
+void pop();
+void display();
+struct node
+{
+int val;
+struct node *next;
+}*head;
+void main ()
+{
+int choice=0;
+printf("\n*********Stack operations using linked list*********\n");
+printf("\n----------------------------------------------\n");
+while(choice != 4)
+{
+printf("\n\nChose one from the below options...\n");
+printf("\n1.Push\n2.Pop\n3.Show\n4.Exit");
+printf("\n Enter your choice \n");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+{
+push();
+break;
+}
+case 2:
+{
+pop();
+break;
+}
+case 3:
+{
+display();
+break;
+}
+case 4:
+{
+printf("Exiting....");
+break;
+}
+default:
+{
+printf("Please Enter valid choice ");
+}
+};
+}
+}
+void push ()
+{
+int val;
+struct node *ptr = (struct node*)malloc(sizeof(struct node));
+if(ptr == NULL)
+{
+printf("not able to push the element");
+}
+else
+{
+printf("Enter the value:");
+scanf("%d",&val);
+if(head==NULL)
+{
+ptr->val = val;
+ptr -> next = NULL;
+head=ptr;
+}
+else
+{
+ptr->val = val;
+ptr->next = head;
+head=ptr;
+}
+printf("Item pushed");
+}
+}
+void pop()
+{
+int item;
+struct node *ptr;
+if (head == NULL)
+{
+printf("Underflow");
+}
+else
+{
+item = head->val;
+ptr = head;
+head = head->next;
+free(ptr);
+printf("Item popped");
+}
+}
+void display()
+{
+int i;
+struct node *ptr;
+ptr=head;
+if(ptr == NULL)
+{
+printf("Stack is empty\n");
+}
+else
+{
+printf("Printing Stack elements \n");
+while(ptr!=NULL)
+{
+printf("%d\n",ptr->val);
+ptr = ptr->next;
+}
+}
+}
+Output
+*********Stack operations using linked list*********
+---------------------------------------------------------
+Choose one from the below options...
+1.Push
+2.Pop
+3.Show
+4.Exit
+ Enter your choice
+1
+Enter the value:12
+Item pushed
+Choose one from the below options...
+1.Push
+2.Pop
+3.Show
+4.Exit
+ Enter your choice
+1
+Enter the value:20
+Item pushed
+Choose one from the below options...
+1.Push
+2.Pop
+3.Show
+4.Exit
+ Enter your choice
+3
+Printing Stack elements
+20
+12
+Choose one from the below options...
+1.Push
+2.Pop
+3.Show
+4.Exit
+ Enter your choice
+2
+Item popped
+Choose one from the below options...
+1.Push
+2.Pop
+3.Show
+4.Exit
+ Enter your choice
+4
+Exiting….
+
