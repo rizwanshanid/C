@@ -1,0 +1,61 @@
+07.04 9:04 PM
+5
+Aim-5
+Search an element in the array using binary search
+Algorithm
+1. Start
+2. Declare int c,first,last,middle,n,search and array[100]
+3. Read number of elements to n.
+4. Repeat steps 5,6 for c=0 to c<n.
+5. Read elements to array[c].
+6. Increment c [End of loop].
+7. Read element to find to search.
+8. Set first=0,last=n-1,middle=(first+last)/2.
+9. Repeat step 10 to step 13 while first<=last.
+10. If array[middle]<search set first=middle+1
+Else go to step11.
+11. If array[middle]=search, print location as middle+1 and exit loop
+Else go to step12.
+12. Set last=middle-1 and middle=(first+last)/2.
+13. If first>last print “Not found”.
+[End of loop].
+14. Stop
+Source code
+#include<stdio.h>
+void main()
+{
+ int c, first, last, middle, n, search, array[100];
+ printf("Enter number of elements\n");
+ scanf("%d",&n);
+ printf("Enter %d integers\n", n);
+ for (c = 0; c < n; c++)
+scanf("%d",&array[c]);
+ printf("Enter value to find\n");
+ scanf("%d", &search);
+ first = 0;
+ last = n - 1;
+ middle = (first+last)/2;
+ while (first <= last)
+{
+if (array[middle] < search)
+first = middle + 1;
+else if (array[middle] == search)
+{
+printf("%d found at location %d.\n", search, middle+1);
+break;
+}
+else
+last = middle - 1;
+middle = (first + last)/2;
+}
+ if (first > last)
+printf("Not found! %d isn't present in the list.\n", search);
+}
+Output
+Enter number of elements
+3
+Enter 3 integers
+5 7 9
+Enter value to find
+9
+9 found at location 3.
