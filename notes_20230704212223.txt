@@ -1,0 +1,65 @@
+07.04 9:03 PM
+4
+Aim-4
+Append two arrays
+Algorithm
+1.Start
+2.Read the limit of first array into size1
+3.[Initialize] i=0
+4.If i<size1, goto step5 otherwise goto step7
+5.Read the element into arr1[i]
+6.[increment] i=i+1, goto step4
+7.Read the limit of second array into size2
+8.[initialize] i=0
+9.If i<size2 goto step10 otherwise goto step12
+10.Read the element into arr2[i]
+11. [increment] i=i+1, goto step9
+12.[initialize] i=size1, j=0
+13. If j<size2, goto step14 otherwise goto step16
+14.arr1[i]=arr2[j]
+15.[increment] j=j+1, i=i+1 goto step13
+16.[initialize] i=0
+17.If i<size1+size2 goto step18 otherwise goto step20
+18.Print arr1[i]
+19.[increment] i=i+1 goto step17
+20.Stop
+Source code
+#include<stdio.h>
+void main()
+{
+ int arr1[50],arr2[50],size1,size2,i,j;
+ printf("Enter Array 1 Size : ");
+ scanf("%d",&size1);
+ printf("Enter Array 1 Elements : ");
+ for(i=0; i<size1; i++)
+ {
+ scanf("%d",&arr1[i]);
+ }
+ printf("Enter Array 2 Size : ");
+ scanf("%d",&size2);
+ printf("Enter Array 2 Elements : ");
+ for(i=0; i<size2; i++)
+ {
+ scanf("%d",&arr2[i]);
+ }
+ for(i=size1,j=0; j<size2;j++,i++)
+ {
+ arr1[i]=arr2[j];
+ }
+ printf("Now the new array after merging is :\n");
+ for(i=0; i<size1+size2; i++)
+ {
+ printf("%d\t",arr1[i]);
+ }
+}
+Output
+Enter the array1 size: 3
+Enter array1 elements: 5
+9
+11
+Enter the array2 size: 3
+Enter array2 elements: 1
+2
+6
+Now the new array after merging is : 5 9 11 1 2
+
