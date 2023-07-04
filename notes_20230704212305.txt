@@ -1,0 +1,160 @@
+07.04 9:10 PM
+11
+Aim-11
+Implement queue using array.
+Algorithm
+1. Start
+2. Set front=-1,rear=-1
+3. Read choice
+4. If choice=1, call insert()
+5. If choice=2, call delete()
+6. If choice=3, call display()
+7. If choice=4, Quit.
+Procedure:-
+insert()
+1. If rear=MAX-1, then print Queue overflow
+2. Else if front=-1, then set front=0, read queue[rear++]
+[end of if structure]
+3. Return
+delete()
+1. If front=-1 or front>rear
+ Print ‘queue underflow’.
+2. Else
+ Print deleted element queue_array[front].
+ front=front+1.
+[end of if structure]
+3. Return
+display()
+1. If front=-1, print ‘queue empty’
+ Else print queue
+2. For i=front and i<rear then
+3. i=i+1
+4. Print queue.
+5. Return
+Source code
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 50
+void insert();
+void delete();
+void display();
+int queue_array[MAX];
+int rear = - 1;
+int front = - 1;
+void main()
+{
+int choice;
+while (1)
+{
+printf("\n\n*****----- ARRAY IMPLEMENTATION OF QUEUE -----*****\n");
+printf("=====================================================\n\n");
+printf("\nMENU\n");
+printf("---------\n");
+printf("1.Insert\n");
+printf("2.Delete\n");
+printf("3.Display\n");
+printf("4.Quit \n");
+printf("Enter your choice : ");
+scanf("%d", &choice);
+switch (choice)
+{
+case 1:
+insert();
+break;
+case 2:
+delete();
+break;
+case 3:
+display();
+break;
+case 4:
+exit(0);
+default:
+printf("Wrong choice \n");
+}
+}
+}
+void insert()
+{
+int add_item;
+if (rear == MAX - 1)
+printf("Queue Overflow \n");
+else
+{
+if (front == - 1)
+front = 0;
+printf("Insert the element in queue : ");
+scanf("%d", &add_item);
+rear = rear + 1;
+queue_array[rear] = add_item;
+}
+}
+void delete()
+{
+if (front == - 1 || front > rear)
+{
+printf("Queue Underflow \n");
+return ;
+}
+else
+{
+printf("Element deleted from queue is : %d\n", queue_array[front]);
+front = front + 1;
+}
+}
+void display()
+{
+int i;
+if (front == - 1)
+printf("Queue is empty \n");
+else
+{
+printf("Queue is : \n");
+for (i = front; i <= rear; i++)
+printf("%d ", queue_array[i]);
+printf("\n");
+}
+}
+Output
+*****----- ARRAY IMPLEMENTATION OF QUEUE -----*****
+=====================================================
+MENU
+---------
+1.Insert
+2.Delete
+3.Display
+4.Quit
+Enter your choice : 1
+Insert the element in queue : 89
+*****----- ARRAY IMPLEMENTATION OF QUEUE -----*****
+=====================================================
+MENU
+---------
+1.Insert
+2.Delete
+3.Display
+4.Quit
+Enter your choice : 3
+Queue is :
+89
+*****----- ARRAY IMPLEMENTATION OF QUEUE -----*****
+=====================================================
+MENU
+---------
+1.Insert
+2.Delete
+3.Display
+4.Quit
+Enter your choice : 1
+Insert the element in queue : 34
+*****----- ARRAY IMPLEMENTATION OF QUEUE -----*****
+=====================================================
+MENU
+---------
+1.Insert
+2.Delete
+3.Display
+4.Quit
+Enter your choice : 2
+Element deleted from queue is : 89
+
