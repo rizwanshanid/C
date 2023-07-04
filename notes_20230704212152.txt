@@ -1,0 +1,41 @@
+07.04 9:02 PM
+1
+Aim-1
+
+Reverse a string using pointers
+Algorithm
+1.Start
+2.Declare the values int len,i
+3.Enter the tring
+4.Find length of string using strlen
+5.for(i=len;i>=0;i--)
+6.print the statement in reverse
+7.Stop
+
+Source Code
+#include<stdio.h>
+#include<string.h>
+void reverse(char *);a
+void main()
+{
+char str[100];
+printf("Enter a string:\n");
+scanf("%[^\t\n]s",str);
+printf("Reverse of the string is \n");
+reverse(str);
+}
+void reverse(char *p)
+{
+int i,c=0;
+for(i=0;*(p+i)!='\0';i++)
+c++;
+for(i=c-1;i>=0;i--)
+printf("%c",*(p+i));
+printf("\n");
+}
+
+Output
+Enter a string: kerala
+Reverse of the string is
+alarek
+
