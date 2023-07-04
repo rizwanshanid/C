@@ -1,0 +1,118 @@
+07.04 9:05 PM
+7
+Aim-7
+Create a singly linked list of n nodes and display it.
+Algorithm
+1. Start
+2. Globally declare struct node *stnode with int num and struct node *nextptr.
+3. Declare integer n.
+4. Read number of nodes to n.
+5. If n>0 goto step6 otherwise goto step24.
+6. Declare struct node *fnnode and *tmp, int num,i.
+7. Allocate memory for stnode.
+8. If stnode=null print “Memory cannot be allocated” otherwise goto step9.
+9. Read number to num.
+10. Store num to num of stnode.
+11. Set nextptr of stnode to null and tmp=stnode.
+12. Repeat step 13 for i=2 to n.
+13. Allocate memory for fnnode.
+14. If fnnode=null then print”Memory can not be allocated” and exit loop, otherwise goto step15.
+15. Read input data to num.
+16. Store num to num of fnnode.
+17. Set nextptr of fnnode to null and set nextptr of tmp=fnnode.
+18. Set tmp=nextptr of tmp.
+[end of loop]
+19. If stnode=null, print “List is empty”, otherwise goto step 20.
+20. Set tmp=stnode.
+21. Repeat steps 22 and 23 while tmp!=null.
+22. Print num of tmp.
+23. Set tmp=nextptr of tmp.
+[end of loop].
+24. Print invalid
+25. Stop.
+Source code
+#include<stdio.h>
+#include <stdlib.h>
+struct node
+{
+int num;
+struct node *nextptr;
+}*stnode;
+void createNodeList(int n);
+void displayList();
+void main()
+{
+int n;
+ printf("\n\n Linked List : To create and display Singly Linked List :\n");
+ printf("-------------------------------------------------------------\n");
+printf(" Input the number of nodes : ");
+scanf("%d", &n);
+if(n>0)
+{
+createNodeList(n);
+printf("\n Data entered in the list : \n");
+displayList();
+ }
+else
+printf("Invalid\n");
+}
+void createNodeList(int n)
+{
+struct node *fnNode, *tmp;
+int num, i;
+stnode = (struct node *)malloc(sizeof(struct node));
+if(stnode == NULL)
+{
+printf(" Memory can not be allocated.");
+}
+else
+{
+printf(" Input data for node 1 : ");
+scanf("%d", &num);
+stnode->num = num;
+stnode->nextptr = NULL;
+tmp = stnode;
+for(i=2; i<=n; i++)
+{
+fnNode = (struct node *)malloc(sizeof(struct node));
+if(fnNode == NULL)
+{
+printf(" Memory can not be allocated.");
+break;
+}
+else
+{
+printf(" Input data for node %d : ", i);
+scanf(" %d", &num);
+fnNode->num = num;
+fnNode->nextptr = NULL;
+tmp->nextptr = fnNode;
+tmp = tmp->nextptr;
+}
+}
+ }
+}
+void displayList()
+{
+struct node *tmp;
+if(stnode == NULL)
+{
+printf(" List is empty.");
+}
+else
+{
+tmp = stnode;
+while(tmp != NULL)
+{
+printf("%d->",tmp->num);
+tmp = tmp->nextptr;
+}
+}
+}
+Output
+Input the number of nodes : 3
+Input the data for node1: 12
+Input the data for node2: 56
+Input the data for node3: 10
+Data entered in the list:
+12->56->10.
